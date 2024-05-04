@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url(/project/images/b.gif);
+            background-size: cover;
+        }
+        #calculator {
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+            background-color: antiquewhite;
+            border-radius: 10px;
+        }
+        h1 {
+            color: cadetblue;
+            font-weight: bold;
+            font-size: 36px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid aqua;
+            border-radius: 10px;
+            background-color: aquamarine;
+            font-weight: bold;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: violet;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bolder;
+        }
+        button:hover {
+            background-color: pink;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color:green;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #bmi {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>BMI Calculator</h1>
+        <input type="number" id="weight" placeholder="Enter your weight" required>
+        <input type="number" id="height" placeholder="Enter your height" required>
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div id="result"></div>
+    </div>
+
+    <div id="bmi">
+        <img src="/project/images/bmi.jpeg" alt="BMI Image">
+    </div>
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value) / 100; // Convert height to meters
+            var bmi = weight / (height * height);
+
+            var result = document.getElementById('result');
+
+            if (!isNaN(bmi)) {
+                result.innerHTML = 'Your BMI is: ' + bmi.toFixed(2);
+            } else {
+                result.innerHTML = 'Please enter valid values for weight and height.';
+            }
+        }
+    </script>
+    <br>
+   <div class="text-center p-3" style="background-color:gray; color: black;" >
+    © 2023 Copyright by Saket Khandelwal
+  </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@font-face {
+    font-family: Pacifico;
+    src: url("/project/Pacifico/Pacifico-Regular.ttf");
+    font-size: 40px;
+}
+
+.fs-4{
+    font-family:Pacifico;
+    font-size:50px;
+    font-weight: bold;
+}
+.container{
+    display:inline;
+}
+.btn{
+    background-color: black;
+    padding: 10px;
+    border: 5px;
+    margin: auto;
+    border-radius: 30%;
+    border-color: greenyellow;
+    color: aliceblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.ss{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.sk{
+    position: relative;
+    text-align: center;
+    padding-top: 80px;
+    display:flex;
+    justify-content: center;
+}
+h1{
+    text-align: left;
+    color: blanchedalmond;
+    font-size: 100px;
+    border-radius: 60%;
+    padding: 50px;
+    padding-right: 100px;
+    height: 100%;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.sm{
+    display: grid;
+    position: relative;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .ss{
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+
+  .as{
+    justify-content: center;
+    align-items: center;;
+    font-family:Pacifico;
+    background-color: blueviolet;
+    color:whitesmoke;
+    padding:30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 20%;
+    margin-top: 50px;
+  }
+
+.ch{
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 95px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: aqua;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-style: solid;
+    border-width: 8px;
+    border-color: whitesmoke;
+    border-radius: 50%; 
+    font-weight: bold;
+    font-size: 40px;   
+}
+.ch:hover{
+    background-color:azure;
+}
+
+
+.hh{
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+    display: flex;
+}
+.jj{
+    text-align:center;
+    padding: 0;
+    background-color: sandybrown;
+    border-radius: 50%;
+    border: solid 10px;
+    border-color: white;
+    color: black;
+    font-size: 400px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    margin-left: 200px;
+    padding: 50px;
+    position: relative;
+    padding-top: 80px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    display: flex;
+    position: relative;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    justify-content: right;
+    margin-right: 200px;
+   
+} 
+  .hidden {
+    display: none; 
+  }
+  
+  h2{
+    color: yellow;
+  } 
+h3{
+    color: yellowgreen;
+}
+
+
+  
