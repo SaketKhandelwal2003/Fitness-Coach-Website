@@ -3,39 +3,55 @@ import axios from "axios";
 const form = document.getElementById("chat-form");
 const input = document.getElementById("chat-input");
 const messages = document.getElementById("chat-messages");
-const apiKey = "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";
+const apiKey = "sk-proj-yP7Y2ZOkXvfMNXWSYIOfT3BlbkFJRvhfMltDS2ewKGJMYx62";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const message = input.value;
+  const message = input.value.trim(); // Remove leading and trailing whitespace
+  if (!message) return; // Do not proceed if the message is empty
   input.value = "";
 
-  messages.innerHTML += `<div class="message user-message">
-  <img src="./icons/user.png" alt="user icon"> <span>${message}</span>
-  </div>`;
+  // Display user message
+  displayMessage("user", message);
 
-  // Use axios library to make a POST request to the OpenAI API
-  const response = await axios.post(
-    "https://api.openai.com/v1/completions",
-    {
-      prompt: message,
-      model: "text-davinci-003",
-      temperature: 0,
-      max_tokens: 1000,
-      top_p: 1,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+  try {
+    // Request to OpenAI API
+    const response = await axios.post(
+      "https://api.openai.com/v1/completions",
+      {
+        prompt: message,
+        model: "text-davinci-003",
+        temperature: 0.7, // Adjust temperature for variability in responses
+        max_tokens: 100, // Limit the length of generated response
+        top_p: 1,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
       },
-    }
-  );
-  const chatbotResponse = response.data.choices[0].text;
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
 
-  messages.innerHTML += `<div class="message bot-message">
-  <img src="./icons/chatbot.png" alt="bot icon"> <span>${chatbotResponse}</span>
-  </div>`;
+    // Display chatbot response
+    const chatbotResponse = response.data.choices[0].text.trim(); // Remove leading and trailing whitespace
+    displayMessage("bot", chatbotResponse);
+  } catch (error) {
+    console.error("Error:", error.message);
+    displayMessage("bot", "Sorry, I couldn't process your request.");
+  }
 });
+
+// Function to display messages
+function displayMessage(sender, message) {
+  const messageClass = sender === "user" ? "user-message" : "bot-message";
+  const iconPath = sender === "user" ? "./icons/user.png" : "./icons/chatbot.png";
+  const messageHTML = `
+    <div class="message ${messageClass}">
+      <img src="${iconPath}" alt="${sender} icon"> 
+      <span>${message}</span>
+    </div>`;
+  messages.innerHTML += messageHTML;
+}
